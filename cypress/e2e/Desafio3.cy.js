@@ -19,23 +19,23 @@ describe("Desafío 3", () => {
   });
 
   it('Desafío 3', () => {
-    cy.visit("/");
-    cy.get("#registertoggle").dblclick();
+    cy.visit("/");    
+    loginPage.botonDblclick(loginPage.irLoginButton);
     loginPage.escribirUsername(data.login.username); 
     loginPage.escribirPassword(data.login.password); 
-    loginPage.login();
-    cy.xpath(`//h2[starts-with(@id,'user_pushingit')]`, {timeout: timeout}).should("exist");
-    cy.xpath('/html/body/div[1]/div/div[2]/div[5]/p/a').click();    
+    loginPage.login();   
+    loginPage.verificarUsername({timeout: timeout});
+    loginPage.botonClick(loginPage.onlineShopButton);
     productPage.agregarProducto(data.productos.gorra.nombre);
-    cy.get('#closeModal').should('be.visible').click();    
+    productPage.botonClick(productPage.modalButton);
     productPage.agregarProducto(data.productos.zapas.nombre);
-    cy.get('#closeModal').should('be.visible').click();        
-    cy.contains('Go to shopping cart').click();
+    productPage.botonClick(productPage.modalButton); 
+    productPage.botonClick(productPage.goShoppingCartButton); 
     shoppingCart.verificarProducto(data.productos.gorra.nombre).should('have.text', data.productos.gorra.nombre);
     shoppingCart.verificarPrecio(data.productos.gorra.nombre).should('have.text',`$${data.productos.gorra.precio}`);
     shoppingCart.verificarProducto(data.productos.zapas.nombre).should('have.text', data.productos.zapas.nombre);
     shoppingCart.verificarPrecio(data.productos.zapas.nombre).should('have.text',`$${data.productos.zapas.precio}`);
-    cy.xpath('//*[@id="root"]/div/div[2]/div[2]/button').click();
-    cy.xpath('//*[@id="price"]/b').should('be.visible').should('have.text', data.productos.gorra.precio + data.productos.zapas.precio);
+    shoppingCart.botonClick(shoppingCart.totalPriceButton);
+    shoppingCart.verificarPrecioTotal(shoppingCart.totalPriceB).should('have.text', data.productos.gorra.precio + data.productos.zapas.precio);
   });
 });
