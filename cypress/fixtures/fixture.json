@@ -1,0 +1,16 @@
+{
+    "login": {
+        "username": "pushingit",
+        "password": "123456!"
+    },
+    "productos": {
+        "gorra":{
+            "nombre": "Red Cap",
+            "precio": 10
+        },
+        "zapas":{
+            "nombre": "White Shoes",
+            "precio": 30
+        }
+    }
+}
