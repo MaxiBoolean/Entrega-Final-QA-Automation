@@ -12,8 +12,8 @@ export class ShoppingCart {
     return cy.contains("p", producto).siblings(this.precioP);
   }
 
-  botonClick(button) {
-    return cy.xpath(button).should("be.visible").click();
+  verPrecioTotal() {
+    cy.xpath(this.totalPriceButton).should("be.visible").click();
   }
 
   verificarPrecioTotal(button) {
