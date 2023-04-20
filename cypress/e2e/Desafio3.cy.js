@@ -8,8 +8,7 @@ import { HeaderPager } from "../support/pages/headerPage";
 
 describe("Desafío 3", () => {
   
-  let data;
-  const timeout = 10000;
+  let data;  
   const loginPage = new LoginPage();
   const productPage = new ProductPage();
   const shoppingCart = new ShoppingCart();
@@ -28,7 +27,7 @@ describe("Desafío 3", () => {
     loginPage.escribirUsername(data.login.username); 
     loginPage.escribirPassword(data.login.password); 
     loginPage.login();   
-    headerPage.verificarUsername({timeout: timeout});
+    headerPage.verificarUsername();
     homePage.goOnlineShopButton();
     productPage.agregarProducto(data.productos.gorra.nombre);
     productPage.cerrarModal();

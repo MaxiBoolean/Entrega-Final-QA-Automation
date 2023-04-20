@@ -15,4 +15,4 @@ export class ProductPage {
   cerrarModal() {
     cy.get(this.modalButton).click();
   }
-};
+}
