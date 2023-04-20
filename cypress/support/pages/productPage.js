@@ -3,11 +3,16 @@ export class ProductPage {
     this.modalButton = "#closeModal";
     this.goShoppingCartButton = "#goShoppingCart";
   }
+
   agregarProducto(producto) {
-    return cy.contains("p", producto).siblings("button").click();
+    cy.contains("p", producto).siblings("button").click();
   }
 
-  botonClick(button) {
-    return cy.get(button).should("be.visible").click();
+  goShopingCartButton() {
+    cy.get(this.goShoppingCartButton).should("be.visible").click();
   }
-}
+
+  cerrarModal() {
+    cy.get(this.modalButton).click();
+  }
+};

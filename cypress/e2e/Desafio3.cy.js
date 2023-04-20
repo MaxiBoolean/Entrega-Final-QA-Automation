@@ -3,6 +3,8 @@
 import { LoginPage } from "../support/pages/loginPage";
 import { ProductPage } from "../support/pages/productPage";
 import { ShoppingCart } from "../support/pages/shoppingCardPage";
+import { HomePage } from "../support/pages/homePage";
+import { HeaderPager } from "../support/pages/headerPage";
 
 describe("Desafío 3", () => {
   
@@ -11,6 +13,8 @@ describe("Desafío 3", () => {
   const loginPage = new LoginPage();
   const productPage = new ProductPage();
   const shoppingCart = new ShoppingCart();
+  const headerPage = new HeaderPager();
+  const homePage = new HomePage();
 
   before("Before", () => {
     cy.fixture("fixture").then((datos) => {
@@ -20,22 +24,22 @@ describe("Desafío 3", () => {
 
   it('Desafío 3', () => {
     cy.visit("/");    
-    loginPage.botonDblclick(loginPage.irLoginButton);
+    loginPage.goLogginPage();
     loginPage.escribirUsername(data.login.username); 
     loginPage.escribirPassword(data.login.password); 
     loginPage.login();   
-    loginPage.verificarUsername({timeout: timeout});
-    loginPage.botonClick(loginPage.onlineShopButton);
+    headerPage.verificarUsername({timeout: timeout});
+    homePage.goOnlineShopButton();
     productPage.agregarProducto(data.productos.gorra.nombre);
-    productPage.botonClick(productPage.modalButton);
+    productPage.cerrarModal();
     productPage.agregarProducto(data.productos.zapas.nombre);
-    productPage.botonClick(productPage.modalButton); 
-    productPage.botonClick(productPage.goShoppingCartButton); 
+    productPage.cerrarModal();
+    productPage.goShopingCartButton(); 
     shoppingCart.verificarProducto(data.productos.gorra.nombre).should('have.text', data.productos.gorra.nombre);
     shoppingCart.verificarPrecio(data.productos.gorra.nombre).should('have.text',`$${data.productos.gorra.precio}`);
     shoppingCart.verificarProducto(data.productos.zapas.nombre).should('have.text', data.productos.zapas.nombre);
     shoppingCart.verificarPrecio(data.productos.zapas.nombre).should('have.text',`$${data.productos.zapas.precio}`);
-    shoppingCart.botonClick(shoppingCart.totalPriceButton);
+    shoppingCart.verPrecioTotal();
     shoppingCart.verificarPrecioTotal(shoppingCart.totalPriceB).should('have.text', data.productos.gorra.precio + data.productos.zapas.precio);
   });
 });
