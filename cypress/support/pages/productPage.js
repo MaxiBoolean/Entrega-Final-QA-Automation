@@ -9,7 +9,7 @@ export class ProductPage {
   }
 
   goShopingCartButton() {
-    cy.get(this.goShoppingCartButton).should("be.visible").click();
+    cy.get(this.goShoppingCartButton).click();
   }
 
   cerrarModal() {

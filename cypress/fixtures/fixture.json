@@ -1,8 +1,4 @@
 {
-    "login": {
-        "username": "pushingit",
-        "password": "123456!"
-    },
     "productos": {
         "gorra":{
             "nombre": "Red Cap",
@@ -12,5 +8,10 @@
             "nombre": "White Shoes",
             "precio": 30
         }
+    },
+    "tarjeta":{
+        "nombre":"Maximiliano",
+        "apellido":"Cordone",
+        "numero":1234567891234567
     }
 }
