@@ -1,11 +1,11 @@
 # Entrega final - PushingIt
-##Descripción
+## Descripción
 
 Proyecto final para curso de Automation con Cypress.
 
 Página donde se realizaron las pruebas automatizadas: [LINK](https://pushing-front.vercel.app/)
 
-##Implementación con Cypress
+## Implementación con Cypress
 
 - Mocha
 - Hooks
