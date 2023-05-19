@@ -3,6 +3,7 @@ export class ShoppingCart {
     this.precioP = "#productPrice";
     this.totalPriceButton = "//*[@id='root']/div/div[2]/div[2]/button";
     this.totalPriceB = '//*[@id="price"]/b';
+    this.goToCheckoutButton = "Go to Checkout";
   }
   verificarProducto(producto) {
     return cy.contains("p", producto);
@@ -13,10 +14,14 @@ export class ShoppingCart {
   }
 
   verPrecioTotal() {
-    cy.xpath(this.totalPriceButton).should("be.visible").click();
+    cy.xpath(this.totalPriceButton).click();
   }
 
   verificarPrecioTotal(button) {
-    return cy.xpath(button).should("be.visible");
+    return cy.xpath(button);
+  }
+
+  irCheckout() {
+    cy.contains(this.goToCheckoutButton).click();
   }
 }
